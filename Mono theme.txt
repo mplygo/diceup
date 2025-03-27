@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Monopoly Go - Dice Generator</title>
+  <meta name="description" content="Monopoly Go - Dice Generator">
+  <meta property="og:title" content="Monopoly Go - Dice Generator">
+  <meta property="og:description" content="Monopoly Go - Dice Generator">
+  <meta name="referrer" content="no-referrer">
+  <script type="text/javascript">cookieChoices = {};</script>
+  <!-- Google Analytics and Sentry scripts unchanged -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5N0VTVWFQR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5N0VTVWFQR');
+  </script>
+  <script src="https://browser.sentry-cdn.com/6.4.1/bundle.min.js" integrity="sha384-THoc7rflwZFKTdZNgv6jLFFDn299Uv3t1SW5B4yGLvLiCRTYP9ys6vXZcMl95TQF" crossorigin="anonymous"></script>
+  <script>
+    Sentry.init({
+      dsn: 'https://e0e6a104cb354a09bf094a90e676ea13@o425163.ingest.sentry.io/5780930',
+      tracesSampleRate: 0.01
+    });
+  </script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    ga('send', 'pageview');
+  </script>
+  <style>
+    body {
+      margin: 0;
+      font-family: Roboto, sans-serif;
+      color: #fff;
+      background-image: url(https://assetsio.gnwcdn.com/monopolygo.jpg?width=1600&height=900&fit=crop&quality=100&format=png&enable=upscale&auto=webp);
+      height: 100%;
+    }
+    .content-container {
+      width: 80%;
+      margin: 0 auto;
+    }
+    h1 {
+      color: #ffffff;
+      text-shadow: 0 0 5px #3d3a91;
+      font-size: 32px;
+      margin-top: 10px;
+      padding-top: 0;
+    }
+    .header {
+      text-align: center;
+      padding: 20px 0;
+    }
+    .logo1 {
+      width: 150px;
+      margin: 0 auto;
+      display: block;
+    }
+    .content {
+      max-width: 800px;
+      width: 90%;
+      position: relative;
+      height: auto;
+      padding-bottom: 40px;
+      margin-top: 15px;
+    }
+    .data1 {
+      display: block;
+      max-width: 500px;
+      background: #ffffffc2;
+      box-shadow: 0 0 5px 0px #00000052;
+      padding: 20px;
+      border-radius: 20px;
+    }
+    .text1 {
+      font-size: 22px;
+      color: #2a2a2a;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .subtext {
+      color: #838383;
+      max-width: 400px;
+      margin-top: 10px;
+    }
+    .input-form {
+      margin-top: 20px;
+      position: relative;
+      width: 80%;
+    }
+    .input-bg::before {
+      content: '';
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 2;
+      background: #ffffff;
+      border-radius: 40px;
+      border: 2px solid #838383;
+    }
+    .epu-u-i {
+      font-family: Acme;
+      outline: none;
+      background: transparent;
+      border: none;
+      width: 70%;
+      height: 60px;
+      z-index: 3;
+      position: relative;
+      padding: 0 54px 0 33px;
+      color: black;
+      font-size: 26px;
+      background-image: url(https://iili.io/JokyZU7.jpg);
+      background-repeat: no-repeat;
+      background-position: left;
+      background-size: 25px;
+    }
+    .bntProcess {
+      width: 200px;
+      padding: 15px;
+      cursor: pointer;
+      background-color: #1d9bf0;
+      margin-top: 20px;
+      color: white;
+      font-size: 18px;
+      border-radius: 7px;
+    }
+    .prostep123 {
+      width: 250px;
+      height: 20px;
+      position: relative;
+      margin-top: 40px;
+    }
+    .protext, .protext3 {
+      font-size: 10px;
+      color: yellow;
+      position: absolute;
+      top: -15px;
+    }
+    .protext { left: -42px; }
+    .protext3 { right: -5px; }
+    .cicleline {
+      width: 100%;
+      height: 2px;
+      background-color: #e9e9e9;
+      top: 7px;
+      position: absolute;
+      z-index: -1;
+    }
+    .stepNum {
+      position: absolute;
+      width: 40px;
+      height: 19px;
+      top: -65px;
+      left: 50%;
+      padding: 10px 0;
+      margin-left: -23px;
+      border-radius: 50%;
+      border: 3px solid #e5e5e5;
+      color: #e5e5e5;
+      font-weight: 900;
+    }
+    .cicle, .cicle3 {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background-color: #0364ee;
+      position: absolute;
+    }
+    .cicle3 { right: 0; background-color: #e9e9e9; }
+    .footer {
+      height: 30px;
+      width: 100%;
+      background-color: #5d70736e;
+      padding: 12px 0;
+      position: fixed;
+      bottom: 0;
+      color: #ffffff;
+      left: 0;
+      font-size: 12px;
+    }
+    a { color: #ffffff; }
+    .showin { animation: showin 0.5s forwards; }
+    @keyframes showin {
+      0% { transform: scale(0); }
+      30% { transform: scale(1); }
+      60% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    .hidein { animation: flyinhide 1s forwards; }
+    @keyframes flyinhide {
+      0% { transform: scale(1); }
+      10% { transform: scale(0.9); }
+      20% { transform: scale(1.1); }
+      100% { transform: scale(0); }
+    }
+    .showin5 { animation: showin4 2.2s forwards; }
+    @keyframes showin4 {
+      0% { transform: scale(0); }
+      30% { transform: scale(1); }
+      60% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    .slit-out-vertical { animation: slit-out-vertical .5s ease-in both; }
+    @keyframes slit-out-vertical {
+      0% { transform: translateZ(0) rotateY(0); opacity: 1; }
+      54% { transform: translateZ(-160px) rotateY(87deg); opacity: 1; }
+      100% { transform: translateZ(-800px) rotateY(90deg); opacity: 0; }
+    }
+    @media only screen and (max-width:480px) {
+      .text1 { font-size: 16px; }
+      .epu-u-i { height: 47px; padding: 0 0 0 38px; font-size: 24px; }
+    }
+  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <center>
+    <div class="header">
+      <img src="https://d266key948fg17.cloudfront.net/uploads/16849681101046e76051c69c029b639d4fc4a52de3.png" class="logo1" style="width:20%;">
+      <div class="showin" id="texth1">
+        <h1>Monopoly Go - Dice Generator</h1>
+      </div>
+    </div>
+    <div class="prostep123" id="prostep123">
+      <div class="stepNum" id="stepNum">1</div>
+      <div class="protext">Input your Username/ID</div>
+      <div class="protext3">Enjoy</div>
+      <div class="cicle"></div>
+      <div class="cicle3" id="cicle3"></div>
+      <div class="cicleline" id="cicleline"></div>
+    </div>
+    <div class="content showin" id="content">
+      <div class="data1">
+        <div class="step1" id="step1">
+          <div class="text1">Welcome!</div>
+          <div class="subtext">Enter your Username/ID</div>
+          <div class="errorname showin" style="display:none" id="errorname">Error: <span style="color:red">Username/ID can't be empty!</span></div>
+          <div class="input-form" id="input-form">
+            <div class="input-bg">
+              <input id="uid" class="epu-u-i" spellcheck="false" placeholder="Username/ID">
+            </div>
+          </div>
+          <div class="subtext"></div>
+          <div onclick="proceed()" class="bntProcess">Collect Now!</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <a href="#"></a>  <a href="#"></a>  <a href="#"></a><br>
+    </div>
+  </center>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script type="text/javascript">
+    var aHqBv_jtc_nPsTXc={"it":4458164,"key":"11a73"};
+    var forward = "";
+    CPABUILDSETTINGS.onComplete = function(data) {
+      window.location = forward;
+      return false;
+    };
+  </script>
+  <script src="https://d2v7l2267atlz5.cloudfront.net/4b60cf5.js"></script>
+  <script type="text/javascript">
+    var name = "";
+    function proceed() {
+      name = document.getElementById("uid").value;
+      if (name === "") {
+        document.getElementById("input-form").classList.add("sakeanimation");
+        document.getElementById("errorname").style.display = "block";
+        setTimeout(function() {
+          document.getElementById("input-form").classList.remove("sakeanimation");
+        }, 500);
+      } else {
+        document.getElementById("step1").classList.add("hidein");
+        setTimeout(function() {
+          document.getElementById("content").classList.add("slit-out-vertical");
+          setTimeout(function() {
+            document.getElementById("stepNum").innerHTML = "2";
+            document.getElementById("stepNum").classList.add("showin5");
+            document.getElementById("prostep123").classList.add("showin5");
+            document.getElementById("cicle3").style.background = "#0364ee";
+            document.getElementById("cicleline").style.background = "linear-gradient(45deg, #0364ee, transparent)";
+            document.getElementById("content").style.height = "0px";
+            document.getElementById("content").style.padding = "0px";
+            document.getElementById("content").style.margin = "0px";
+            CPABuildLock(); // Directly trigger CPA offer
+          }, 500);
+        }, 1000);
+      }
+    }
+  </script>
+</body>
+</html>
